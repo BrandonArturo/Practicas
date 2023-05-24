@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de Numeros</title>
+</head>
+
+<body>
+    <h1>Suma de numeros</h1>
+    <p>Introduce los 2 siguientes numeros en las cajas de texto</p>
+    <form>
+        <input type="text" name="numero 1" id="n1"> + <input type="text" name="numero 2" id="n2">
+        <input type="button" value="sumar" onclick="suma()">
+        <input type="reset" value="borrar">
+    </form>
+    <script>
+        function suma() {
+            resultado = parseInt(n1.value) + parseInt(n2.value);
+            alert("El resultado es:" + resultado);
+        }
+    </script>
+</body>
+
+</html>

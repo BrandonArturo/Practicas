@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta</title>
+</head>
+
+<body>
+    <h2>Alerta con HTML y JavaScrip</h2>
+
+    <input type="button" value="Mensaje" onclick="Mensaje()">
+    <hr>
+    <p>Cuidado al precionar el checbox</p>
+    <input type="checkbox" name="Precion me" onclick="Precion()">
+    <hr>
+    <p>Escribir con JavaScrip</p>
+    <input type="button" value="Escribe un mensaje" onclick="document.write('Atte:Mega informatico')">
+    <hr>
+    <p>vinculos con alertas</p>
+    <a href="javascript:alert('Uy no habia nada');">Da le clic</a>
+    <hr>
+    <a href="javascript:window.print()">Imprimir pantalla</a>
+    <hr>
+    <p>Alerta Con Opcion Aceptar y Cancelar</p>
+    <a href="#" onclick="Salir()">Salir de la practica</a>
+    <!--funcion boton-->
+    <script>
+        function Mensaje() {
+            alert("Cuido esto es una alerta");
+        }
+    </script>
+    <!--fucncion de checkbox-->
+    <script>
+        function Precion() {
+            alert("Ya le diste al checkbox");
+        }
+    </script>
+    <!--Funcion Escribir-->
+    <!--Texto
+    <script>
+        function Escribir(){
+            document.write("Es re facil trabajar con javascrip Atte: Alguien que no le tiene miedo al exito");
+        }
+    </script>
+-->
+    <script>
+        function Salir() {
+            var Salir = confirm("¿De verdad vas a salir?")
+            if (Salir) {
+                alert("Vuelve pronto")
+                window.location = "http://google.com.mx";
+            }
+            else {
+                alert("Gracias por seguir en la pagina")
+            }
+        }
+    </script>
+</body>
+
+</html>

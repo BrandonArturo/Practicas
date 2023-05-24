@@ -1,0 +1,208 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul, li{
+    list-style: none;
+}
+.clarfix:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content:"";
+    clear: both;
+    height: 0;
+}
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(244, 248, 248);
+    color: black;
+    margin-top: 70px;
+}
+p{
+    line-height: 1.4;
+}
+.estilo-nav{
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 0.7rem;
+}
+.text-center{
+    text-align: center;
+}
+.site-logo{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    margin: 0.1rem;
+}
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.nav-bar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(240, 7, 7);
+    height: 50px;
+}
+.nav-bar .container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+#drop-down-cbox{
+    display: none;
+}
+#drop-down-cbox + label{
+    position: relative;
+    display: none;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    background-color: transparent;
+    transition: all 10ms ease-in-out;
+}
+#drop-down-cbox + label span{
+    position: absolute;
+    display: block;
+    background-color: rgb(13, 247, 5);
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 300ms ease-in-out;
+}
+#drop-down-cbox +label span:nth-child(1){
+    top: 35%;
+}
+#drop-down-cbox +label span:nth-child(2){
+    top: 50%;
+}
+#drop-down-cbox +label span:nth-child(3){
+    top: 65%;
+}
+#drop-down-cbox:checked + label{
+    background-color: rgb(13, 247,5);
+}
+#drop-down-cbox:checked + label span{
+    background-color: white;
+}
+#drop-down-cbox:checked + label span:nth-child(1){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+#drop-down-cbox:checked + label span:nth-child(2){
+   left: -150%;
+}
+#drop-down-cbox:checked + label span:nth-child(3){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.main-nav{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.main-nav li{
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.main-nav li a, .main-nav li span{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.main-nav li a:hover, .main-nav li span:hover{
+    border-bottom: 3px solid yellowgreen;
+}
+.main-nav li > ul{
+    max-height: 180px;
+    height: auto;
+}
+.main-nav li> ul li a,
+.main-nav li> ul li span{
+    background-color: white;
+    border-bottom: none;
+}
+.main-nav li > ul li a:hover,
+.main-nav lo > ul li span:hover{
+    background-color: rgb(13, 247,5);
+    color: rgb(153, 55, 68);
+    border-bottom: none;
+}
+@media(max-width:900px){
+    .site-logo{
+        font-size: 1rem;
+        flex-grow: 1;
+        text-align: center;
+    }
+    #drop-down-cbox + lable{
+        display: block;
+    }
+    .main-nav{
+        max-height: 0px;
+        height: calc(100vh - 60px);
+        position: absolute;
+        overflow: hidden;
+        top: 60px;
+        line-height: auto;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        transition: all 50ms ease-in-out;
+    }
+    #drop-down-cbox:checked ~ .main-nav{
+        max-height: calc(100% - 60px);
+        transition: all 500ms ease-in-out;
+    }
+    .main-nav li span{
+        position: relative;
+    }
+    .main-nav li span::after{
+        content: "";
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        margin-left: 8px;
+        transform: translate(-50%) rotate(-45deg);
+        border-left: 2px solid yellowgreen;
+        border-bottom: 2px solid yellowgreen;
+    }
+    .main-nav li a:hover,
+    .main-nav li span:hover{
+        background-color: yellowgreen;
+        color: white;
+        border-bottom: none;
+    }
+    .main-nav li > ul li a,
+    .main-nav li > ul li span{
+        background-color: goldenrod;
+    }
+}
+.barra ul li a:hover{
+    color: antiquewhite;
+    transition: 1s
+}
+.parte1{
+    float: left;
+    width: 50%;
+    text-align: ;
+}

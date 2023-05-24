@@ -1,0 +1,75 @@
+padding: 10px0;
+-webkit-transition: alln 0.4s ease 0s;
+-moz-transition: all 0,4s ease 0s;
+-ms-transition: all 0.4s ease 0s;
+-o-transition: all 0.4s ease 0s;
+transition: all 0.4s ease 0s; 
+}
+.moblie- menu li:hover a{
+    color: white;
+    background-color: red;
+    transition: 1s;
+}
+.moblie- menu li:hover ul a{
+    background: 
+    color: blue;
+    height: 40px;
+    line-height: 40px;
+}
+.moblie- menu li :hover .moblie-menu ul a: :hover{
+    color: orange;
+}
+.moblie-menu li ul{
+    display: none;
+}
+.moblie-menu li ul li{
+    display: block;
+    float: none;
+}
+.moblie-menu li ul li a{
+    width: auto;
+    min-width: 100px;
+    padding: 0 20px;
+}
+.moblie-menu .show-menu{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    display: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.moblie-menu .show-menu span{
+    padding-left: 25px;
+}
+.moblie-menu input [type=checkbox]{
+    display: none;
+}
+.moblie-menu input [type=checkbox]:checked ~ #menu{
+    display: block;
+}
+@media screen and (max-width: 800px){
+.moblie-menu .line{
+        border-bottom: 15px double red;
+        border-top: 5px solid brown;
+        content: "";
+        height: 5px;
+        width: 20px;
+        padding-right: 15px;
+        float: right;
+}
+.moblie-menu ul{
+    position: static;
+    display: none;
+}
+.moblie-menu li{
+    margin-bottom: 1px;
+}
+.moblie-menu ul li, .moblie-menu li a{
+    width: 100px;
+}
+.moblie-menu .show-menu{
+    display: block;
+}
+}
