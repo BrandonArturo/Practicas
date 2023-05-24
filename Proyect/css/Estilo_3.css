@@ -197,12 +197,3 @@ p{
         background-color: goldenrod;
     }
 }
-.barra ul li a:hover{
-    color: antiquewhite;
-    transition: 1s
-}
-.parte1{
-    float: left;
-    width: 50%;
-    text-align: ;
-}
