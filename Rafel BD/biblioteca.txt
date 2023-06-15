@@ -1,0 +1,426 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 31-05-2023 a las 01:13:54
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `biblioteca`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `autor`
+--
+
+CREATE TABLE `autor` (
+  `codigo` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `autor`
+--
+
+INSERT INTO `autor` (`codigo`, `nombre`) VALUES
+(100, 'Juan'),
+(230, 'Carlos'),
+(233, 'Roman'),
+(234, 'Miguel'),
+(323, 'William'),
+(354, 'jose'),
+(564, 'David'),
+(637, 'yair'),
+(699, 'pancho'),
+(988, 'Carlos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calle`
+--
+
+CREATE TABLE `calle` (
+  `id` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `id_municipio` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `calle`
+--
+
+INSERT INTO `calle` (`id`, `nombre`, `id_municipio`) VALUES
+(189, 'ecatepec', 367),
+(234, 'Hidalgo', 856),
+(292, 'venuztiano carranza', 189),
+(450, 'la chacona', 189),
+(576, 'Amado nervo', 345),
+(659, 'Miguel negrete', 457),
+(767, 'La tolva', 479),
+(789, 'La curva', 856),
+(967, 'valle dorado', 190),
+(968, 'sanbartolo', 639);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `direccion`
+--
+
+CREATE TABLE `direccion` (
+  `cp` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`cp`) VALUES
+(5896),
+(6709),
+(8956),
+(12347),
+(25768),
+(28968),
+(37495),
+(45645),
+(58575),
+(65486);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `editorial`
+--
+
+CREATE TABLE `editorial` (
+  `codigo` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `ISBN_libro` int(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `editorial`
+--
+
+INSERT INTO `editorial` (`codigo`, `nombre`, `ISBN_libro`) VALUES
+(234, 'Bubok', 564),
+(337, 'juan', 38),
+(345, 'Círculo Rojo', 343),
+(423, 'Letrame Letrame', 123),
+(432, 'laurouse', 436),
+(564, 'acantilado', 67),
+(832, 'la alfombra', 438),
+(875, 'Lulu ', 256),
+(926, 'la casa azul ', 548),
+(937, 'el sotano', 924);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ejemplar`
+--
+
+CREATE TABLE `ejemplar` (
+  `codigo` int(20) NOT NULL,
+  `id_localizacion` int(20) DEFAULT NULL,
+  `ISBN_libro` int(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ejemplar`
+--
+
+INSERT INTO `ejemplar` (`codigo`, `id_localizacion`, `ISBN_libro`) VALUES
+(88, 938, 745),
+(98, 129, 67),
+(295, 397, 726),
+(345, 345, 123),
+(355, 172, 758),
+(459, 720, 738),
+(477, 930, 178),
+(547, 356, 256),
+(659, 543, 343),
+(756, 567, 564);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado`
+--
+
+CREATE TABLE `estado` (
+  `id` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `cp_direccion` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`id`, `nombre`, `cp_direccion`) VALUES
+(26, 'toluca', 1632),
+(35, 'toluca', 36186),
+(83, 'juanaguato', 9453),
+(234, 'Chiapas', 65486),
+(242, 'Baja California', 8956),
+(432, 'Campeche', 12347),
+(537, 'oaxaca', 2670),
+(548, 'Guerrero ', 25768),
+(596, 'Michoacán', 45645),
+(649, 'veracruz ', 26527);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libro`
+--
+
+CREATE TABLE `libro` (
+  `ISBN` int(12) NOT NULL,
+  `no_pag` int(255) DEFAULT NULL,
+  `titulo` varchar(20) DEFAULT NULL,
+  `codigo_autor` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `libro`
+--
+
+INSERT INTO `libro` (`ISBN`, `no_pag`, `titulo`, `codigo_autor`) VALUES
+(67, 200, 'La odisea', 234),
+(84, 300, 'base de datos', 100),
+(123, 500, 'La aliada', 564),
+(137, 700, 'el gato y el perro ', 250),
+(144, 700, 'el gato y el perro ', 250),
+(256, 400, 'Psicología', 230),
+(343, 2000, 'HTML5', 323),
+(564, 322, 'Android ', 564),
+(578, 988, 'pendrives ', 556),
+(819, 80000, 'gatos', 190),
+(842, 300, 'base de datos', 100),
+(868, 80000, 'gatos', 190),
+(938, 988, 'pendrives ', 556),
+(982, 800, 'flores', 150),
+(1002, 800, 'flores', 150);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `localizacion`
+--
+
+CREATE TABLE `localizacion` (
+  `id` int(20) NOT NULL,
+  `pasillo` varchar(20) DEFAULT NULL,
+  `estante` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `localizacion`
+--
+
+INSERT INTO `localizacion` (`id`, `pasillo`, `estante`) VALUES
+(129, 'pasillo 1', 'estante 9'),
+(278, 'pasillo 9', 'estante 8'),
+(345, 'pasillo 3', 'estante 10'),
+(356, 'pasillo 4', 'estante 2'),
+(538, 'pasillo 49', 'estante 11'),
+(543, 'pasillo 6', 'estante 20'),
+(567, 'pasillo 19', 'estante 4'),
+(798, 'pasillo 8', 'estante 4'),
+(826, 'pasillo 117', 'estante 41'),
+(928, 'pasillo 6', 'estante 12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `municipio`
+--
+
+CREATE TABLE `municipio` (
+  `id` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `id_estado` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `municipio`
+--
+
+INSERT INTO `municipio` (`id`, `nombre`, `id_estado`) VALUES
+(243, 'poza hoonda', 758),
+(324, 'Ecatepec', 242),
+(345, 'Atizapan', 548),
+(453, 'teoloyucan', 367),
+(457, ' Zacazonapan', 432),
+(479, 'Ixtapaluca', 596),
+(567, 'hidalgo', 720),
+(574, ' toluca', 932),
+(796, 'ixtacalco', 790),
+(856, 'Polotitlán', 234);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `prestamo`
+--
+
+CREATE TABLE `prestamo` (
+  `fecha_p` int(10) NOT NULL,
+  `fecha_d` int(10) DEFAULT NULL,
+  `codigo_usuario` int(20) DEFAULT NULL,
+  `codigo_ejemplar` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `prestamo`
+--
+
+INSERT INTO `prestamo` (`fecha_p`, `fecha_d`, `codigo_usuario`, `codigo_ejemplar`) VALUES
+(-2022, -2023, 934, 98),
+(-2020, -2023, 597, 547),
+(-2019, -2023, 349, 89),
+(-2018, -2025, 895, 559),
+(-2015, -2016, 567, 756),
+(-2012, -2013, 867, 345),
+(-2010, -2016, 675, 567),
+(-2004, -2005, 876, 659),
+(-2003, -2004, 975, 475),
+(-2000, -2001, 768, 454);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `temporal`
+--
+
+CREATE TABLE `temporal` (
+  `codigo` tinyint(10) NOT NULL,
+  `prueba` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `codigo` int(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `apellido1` varchar(20) DEFAULT NULL,
+  `apellido2` varchar(20) DEFAULT NULL,
+  `telefono` int(10) DEFAULT NULL,
+  `id_calle` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`codigo`, `nombre`, `apellido1`, `apellido2`, `telefono`, `id_calle`) VALUES
+(567, 'Ludwing', 'Alexis', 'Franco ', 1729036485, 789),
+(597, 'Jorge ', 'Mayolo', 'Flores', 1037852789, 659),
+(867, 'Maria', 'Camila', 'Lopes', 156493543, 576),
+(876, 'Fernanda', 'Marcial', 'Lopez', 2147483647, 767),
+(934, 'David', 'Anacleto', 'Cocoletzi', 429253892, 659),
+(676, 'isaias', 'santiago', 'Fernando ', 2147483647, 894),
+(975, 'arturo', 'benitez', 'martinez', 2147483647, 594),
+(755, 'juan', 'alberto', 'perez', 2147483647, 976),
+(576, 'uriel', 'Martinez', 'sierra', 2147483647, 678),
+(354, 'elver', 'casimiro', 'sanchez', 735272591, 549);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `autor`
+--
+ALTER TABLE `autor`
+  ADD PRIMARY KEY (`codigo`);
+
+--
+-- Indices de la tabla `calle`
+--
+ALTER TABLE `calle`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_municipio` (`id_municipio`);
+
+--
+-- Indices de la tabla `direccion`
+--
+ALTER TABLE `direccion`
+  ADD PRIMARY KEY (`cp`);
+
+--
+-- Indices de la tabla `editorial`
+--
+ALTER TABLE `editorial`
+  ADD PRIMARY KEY (`codigo`),
+  ADD KEY `ISBN_libro` (`ISBN_libro`);
+
+--
+-- Indices de la tabla `ejemplar`
+--
+ALTER TABLE `ejemplar`
+  ADD PRIMARY KEY (`codigo`),
+  ADD KEY `id_localizacion` (`id_localizacion`),
+  ADD KEY `ISBN_libro` (`ISBN_libro`);
+
+--
+-- Indices de la tabla `estado`
+--
+ALTER TABLE `estado`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cp_direccion` (`cp_direccion`);
+
+--
+-- Indices de la tabla `libro`
+--
+ALTER TABLE `libro`
+  ADD PRIMARY KEY (`ISBN`),
+  ADD KEY `codigo_autor` (`codigo_autor`);
+
+--
+-- Indices de la tabla `localizacion`
+--
+ALTER TABLE `localizacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `municipio`
+--
+ALTER TABLE `municipio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_estado` (`id_estado`);
+
+--
+-- Indices de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+  ADD PRIMARY KEY (`fecha_p`),
+  ADD KEY `codigo_usuario` (`codigo_usuario`),
+  ADD KEY `codigo_ejemplar` (`codigo_ejemplar`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
